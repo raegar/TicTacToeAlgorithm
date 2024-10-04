@@ -1,1 +1,1 @@
-#Solution for Tic Tac Toe with Minimax and Alpha-Beta Pruning
+#Solution for Tic Tac Toe with Minimax
