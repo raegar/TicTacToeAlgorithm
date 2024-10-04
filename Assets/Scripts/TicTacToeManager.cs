@@ -129,7 +129,8 @@ public class TicTacToeManager : MonoBehaviour
         foreach (var move in availableMoves)
         {
             game.MakeMove(move.Row, move.Col, TicTacToeGame.Player.O);
-            int moveScore = aiPlayer.Minimax(game, 0, false, int.MinValue, int.MaxValue);
+            int moveScore = aiPlayer.Minimax(game, 0, false);
+            //int moveScore = aiPlayer.Minimax(game, 0, false, int.MinValue, int.MaxValue); //Invoke Minimax with alpha-beta pruning
             game.UndoMove(move.Row, move.Col);
 
             if (moveScore > bestScore)

@@ -1,10 +1,11 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using static TicTacToeGame;
+
 public class AIPlayer
 {
-    public int Minimax(TicTacToeGame game, int depth, bool isMaximizing, int alpha, int beta)
+    public int Minimax(TicTacToeGame game, int depth, bool isMaximizing)
     {
         if (game.CheckWin(TicTacToeGame.Player.X))
             return -10 + depth;
@@ -19,11 +20,9 @@ public class AIPlayer
             foreach (var move in game.GetAvailableMoves())
             {
                 game.MakeMove(move.Row, move.Col, Player.O);
-                int eval = Minimax(game, depth + 1, false, alpha, beta);
+                int eval = Minimax(game, depth + 1, false);
                 game.UndoMove(move.Row, move.Col);
                 maxEval = Mathf.Max(eval, maxEval);
-                alpha = Mathf.Max(alpha, eval);
-                if (beta <= alpha) break;
             }
             return maxEval;
         }
@@ -33,13 +32,16 @@ public class AIPlayer
             foreach (var move in game.GetAvailableMoves())
             {
                 game.MakeMove(move.Row, move.Col, TicTacToeGame.Player.X);
-                int eval = Minimax(game, depth + 1, true, alpha, beta);
+                int eval = Minimax(game, depth + 1, true);
                 game.UndoMove(move.Row, move.Col);
                 minEval = Mathf.Min(eval, minEval);
-                beta = Mathf.Min(beta, eval);
-                if (beta <= alpha) break;
             }
             return minEval;
         }
+    }
+
+    public int Minimax(TicTacToeGame game, int depth, bool isMaximizing, int alpha, int beta) //With alpha-beta pruning
+    {
+        throw new NotImplementedException();
     }
 }
