@@ -39,7 +39,7 @@ public class TicTacToeManager : MonoBehaviour
         float totalHeight = (3 * buttonSize) + (2 * spacing);
 
         // Calculate the starting position to center the grid on the canvas
-        float startX = -(totalWidth / 2);
+        float startX = -(totalWidth / 2) + 120;
         float startY = -(totalHeight / 2);
 
         // Create the 3x3 grid of buttons
@@ -64,8 +64,6 @@ public class TicTacToeManager : MonoBehaviour
             }
         }
     }
-
-
 
 
 
